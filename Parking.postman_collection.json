@@ -1,0 +1,1268 @@
+{
+	"info": {
+		"_postman_id": "9a3eae95-7993-45bf-9627-77701b6bf12c",
+		"name": "Parking",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "41931282"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"first_name\": \"John\",\n    \"last_name\": \"Doe\",\n    \"email\": \"johndoe@example.com\",\n    \"contact_number\": \"9876543210\",\n    \"password\": \"SecurePass123\",\n    \"password_confirmation\": \"SecurePass123\",\n    \"state\": \"California\",\n    \"city\": \"Los Angeles\",\n    \"country\": \"USA\",\n    \"role\": \"user\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/auth/register",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Verify Otp",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"contact_number\": \"9876543210\",\n    \"otp\": \"377196\",\n    \"type\": \"registration\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/auth/verify-otp",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"auth",
+								"verify-otp"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"contact_number\": \"9876543210\",\n    \"password\": \"NewSecurePass123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/auth/login",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Forgot Password",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"contact_number\": \"9876543210\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/auth/forgot-password",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"auth",
+								"forgot-password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Reset Password",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"contact_number\": \"9876543210\",\n    \"otp\": \"367230\",\n    \"password\": \"NewSecurePass123\",\n    \"password_confirmation\": \"NewSecurePass123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/auth/reset-password",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"auth",
+								"reset-password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "10|8yVQOQffD2QJ6TyeNlCsjayosX9So0hOCZEHtgr2b8fea821",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/auth/logout",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"auth",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get User",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "6|3P1WSVshcbXo0DfUuCcPoh8pzM6rru8o1909qQgx08dae6d9",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"user\": {\n        \"first_name\": \"Johhn\",\n        \"last_name\": \"Doe\",\n        \"email\": \"johndoe@example.com\",\n        \"contact_number\": \"9876543210\",\n        \"state\": \"California\",\n        \"city\": \"Los Angeles\",\n        \"country\": \"USA\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/profile",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"profile"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Public Parking Locations",
+			"item": [
+				{
+					"name": "Get All Location",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/parking-locations",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"parking-locations"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Location Detail",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/parking-locations/25",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"parking-locations",
+								"25"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Profile",
+			"item": [
+				{
+					"name": "Get Profile",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "6|3P1WSVshcbXo0DfUuCcPoh8pzM6rru8o1909qQgx08dae6d9",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/profile",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Profile",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "6|3P1WSVshcbXo0DfUuCcPoh8pzM6rru8o1909qQgx08dae6d9",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"user\": {\n        \"first_name\": \"Johhn\",\n        \"last_name\": \"Doee\",\n        \"email\": \"johndoe@example.com\",\n        \"contact_number\": \"9876543210\",\n        \"state\": \"California\",\n        \"city\": \"Los Angeles\",\n        \"country\": \"USA\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/profile",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Profile Copy",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "8|BhGpEBUHv7AeQgKGhN9SfBLu7GYcuythfyiTBER9f6bb1bcb",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"current_password\": \"SecurePassword123\",\n  \"password\": \"SecurePassword123\",\n  \"password_confirmation\": \"SecurePassword123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/change-password",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"change-password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Account",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "8|BhGpEBUHv7AeQgKGhN9SfBLu7GYcuythfyiTBER9f6bb1bcb",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"password\": \"SecurePassword123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/account",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"account"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Vehicles",
+			"item": [
+				{
+					"name": "Get All",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "9|rIDBMnOlyoloaqHC7erJsgRWnA74tRJxc8vBun71a151811c",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/vehicles",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"vehicles"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Details",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "9|rIDBMnOlyoloaqHC7erJsgRWnA74tRJxc8vBun71a151811c",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/vehicles/29",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"vehicles",
+								"29"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Vehicle",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "9|rIDBMnOlyoloaqHC7erJsgRWnA74tRJxc8vBun71a151811c",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"type\": \"4-wheeler\",\n  \"number_plate\": \"ABC123\",\n  \"brand\": \"Toyota\",\n  \"model\": \"Corolla\",\n  \"color\": \"Blue\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/vehicles",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"vehicles"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Vehicle",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "9|rIDBMnOlyoloaqHC7erJsgRWnA74tRJxc8vBun71a151811c",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"type\": \"4-wheeler\",\n  \"number_plate\": \"ABC123\",\n  \"brand\": \"Toyota\",\n  \"model\": \"Corolla\",\n  \"color\": \"Blue\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/vehicles",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"vehicles"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Vehicle",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "9|rIDBMnOlyoloaqHC7erJsgRWnA74tRJxc8vBun71a151811c",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/vehicles/31",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"vehicles",
+								"31"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Bookings",
+			"item": [
+				{
+					"name": "Get All Bookings",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "9|rIDBMnOlyoloaqHC7erJsgRWnA74tRJxc8vBun71a151811c",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/bookings",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"bookings"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Check in",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "9|rIDBMnOlyoloaqHC7erJsgRWnA74tRJxc8vBun71a151811c",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"parking_location_id\": 2,\n  \"vehicle_id\": 21,\n  \"duration_hours\": 3\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/bookings/check-in",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"bookings",
+								"check-in"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Advance",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "9|rIDBMnOlyoloaqHC7erJsgRWnA74tRJxc8vBun71a151811c",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"parking_location_id\": 3,\n  \"vehicle_id\": 21,\n  \"date\": \"2025-03-21\",\n  \"start_time\": \"10:30\",\n  \"end_time\": \"12:00\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/bookings/advance",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"bookings",
+								"advance"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Booking Details",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "9|rIDBMnOlyoloaqHC7erJsgRWnA74tRJxc8vBun71a151811c",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/bookings/33",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"bookings",
+								"33"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cancel Advance Booking",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "9|rIDBMnOlyoloaqHC7erJsgRWnA74tRJxc8vBun71a151811c",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/bookings/33/cancel",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"bookings",
+								"33",
+								"cancel"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Complete check in Booking",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "9|rIDBMnOlyoloaqHC7erJsgRWnA74tRJxc8vBun71a151811c",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/bookings/31/complete",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"bookings",
+								"31",
+								"complete"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Verify QR Code",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "9|rIDBMnOlyoloaqHC7erJsgRWnA74tRJxc8vBun71a151811c",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"qr_code\": \"QR_CCCBF83B45\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/bookings/verify-qr",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"bookings",
+								"verify-qr"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Time Slots",
+			"item": [
+				{
+					"name": "Get All",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "9|rIDBMnOlyoloaqHC7erJsgRWnA74tRJxc8vBun71a151811c",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"parking_location_id\": 2,\n  \"date\": \"2025-03-20\",\n  \"vehicle_type\": \"4-wheeler\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/time-slots",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"time-slots"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Dates",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "9|rIDBMnOlyoloaqHC7erJsgRWnA74tRJxc8vBun71a151811c",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"parking_location_id\": 2,\n  \"date\": \"2025-03-20\",\n  \"vehicle_type\": \"4-wheeler\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/available-dates",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"available-dates"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Owner Routes",
+			"item": [
+				{
+					"name": "Parking Location Routes",
+					"item": [
+						{
+							"name": "My Locations",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "10|8yVQOQffD2QJ6TyeNlCsjayosX9So0hOCZEHtgr2b8fea821",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/my-parking-locations",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"my-parking-locations"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Change Status",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "10|8yVQOQffD2QJ6TyeNlCsjayosX9So0hOCZEHtgr2b8fea821",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/parking-locations/16/toggle-status",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"parking-locations",
+										"16",
+										"toggle-status"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Location",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "10|8yVQOQffD2QJ6TyeNlCsjayosX9So0hOCZEHtgr2b8fea821",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Downtown Parking\",\n    \"address\": \"123 Main St\",\n    \"city\": \"Los Angeles\",\n    \"state\": \"CA\",\n    \"country\": \"USA\",\n    \"zip_code\": \"90001\",\n    \"latitude\": 34.0522,\n    \"longitude\": -118.2437,\n    \"two_wheeler_capacity\": 50,\n    \"four_wheeler_capacity\": 30,\n    \"two_wheeler_hourly_rate\": 2.5,\n    \"four_wheeler_hourly_rate\": 5.0\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/parking-locations",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"parking-locations"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Location Copy",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "10|8yVQOQffD2QJ6TyeNlCsjayosX9So0hOCZEHtgr2b8fea821",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Downtown Parking\",\n    \"address\": \"123 Main St\",\n    \"city\": \"Los Angeles\",\n    \"state\": \"CA\",\n    \"country\": \"USA\",\n    \"zip_code\": \"90001\",\n    \"latitude\": 34.0522,\n    \"longitude\": -118.2437,\n    \"two_wheeler_capacity\": 50,\n    \"four_wheeler_capacity\": 30,\n    \"two_wheeler_hourly_rate\": 5.0,\n    \"four_wheeler_hourly_rate\": 50.0\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/parking-locations/26",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"parking-locations",
+										"26"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Dashboard",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "10|8yVQOQffD2QJ6TyeNlCsjayosX9So0hOCZEHtgr2b8fea821",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/owner/dashboard",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"owner",
+								"dashboard"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Booking",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "10|8yVQOQffD2QJ6TyeNlCsjayosX9So0hOCZEHtgr2b8fea821",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/owner/bookings",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"owner",
+								"bookings"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Booking Details",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "10|8yVQOQffD2QJ6TyeNlCsjayosX9So0hOCZEHtgr2b8fea821",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/owner/bookings/33",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"owner",
+								"bookings",
+								"33"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Parking Location",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "10|8yVQOQffD2QJ6TyeNlCsjayosX9So0hOCZEHtgr2b8fea821",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/owner/parking-locations",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"owner",
+								"parking-locations"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Parking Location Details",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "10|8yVQOQffD2QJ6TyeNlCsjayosX9So0hOCZEHtgr2b8fea821",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/owner/parking-locations/3",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"owner",
+								"parking-locations",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Revenue Reports",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "10|8yVQOQffD2QJ6TyeNlCsjayosX9So0hOCZEHtgr2b8fea821",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"period\": \"monthly\",\n  \"start_date\": \"2024-01-01\",\n  \"end_date\": \"2025-03-01\",\n  \"parking_location_id\": 3\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/owner/revenue-reports",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"owner",
+								"revenue-reports"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Check In Booking",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "10|8yVQOQffD2QJ6TyeNlCsjayosX9So0hOCZEHtgr2b8fea821",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"qr_code\": \"eyUyVWX2U81742408625\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/owner/bookings/32/check-in",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"owner",
+								"bookings",
+								"32",
+								"check-in"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Check Out Booking",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "10|8yVQOQffD2QJ6TyeNlCsjayosX9So0hOCZEHtgr2b8fea821",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"qr_code\": \"eyUyVWX2U81742408625\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/owner/bookings/32/check-out",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"owner",
+								"bookings",
+								"32",
+								"check-out"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
