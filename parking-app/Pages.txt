@@ -1,0 +1,33 @@
+1. Authentication Pages (already completed)
+Registration
+Login
+Forgot Password
+2. User Dashboard
+Overview with user information
+Summary of bookings, vehicles, etc.
+3. Parking Locations
+List view of all available parking locations
+Map view (optional)
+Location details page with information about a specific location
+4. Vehicle Management
+List of user's vehicles
+Add/edit/delete vehicle forms
+5. Booking Management
+Create new booking (with location selection, date/time, vehicle)
+View active bookings
+Booking history
+Booking details page (with check-in/check-out info, QR code)
+6. Payment System (if applicable)
+Payment methods management
+Transaction history
+7. User Profile
+View/edit profile information
+Change password
+8. Owner Dashboard (for parking spot owners)
+Manage parking locations
+View bookings for their locations
+Revenue reports
+9. Admin Panel (if required)
+User management
+System-wide parking location management
+Reports and analytics

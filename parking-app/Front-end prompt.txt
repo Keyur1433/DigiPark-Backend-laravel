@@ -1,0 +1,14 @@
+Here is the complete back-end in php of my parking management system project, now i want to build front-end in angular, i had never working with both technologies at same time, like i just learnt front-end seperately and back-end seperatly, but now i have to work with both, so guide me with both from scratch, like which file or folder i have to put where and all that, I think by just reviewing the back-end code you can easily make front-end according to it right, so help me out to make front-end project for this.
+
+I want to make standalone components, so keep this in mind
+Use the angular-bootstrap framework for designing
+Do not use SCSS
+
+I already set up basic angular project folder structure named as parking-app-front-end, so i want to make this project from scratch, so guide me with this project.
+
+my whole backend code is already writtein in parking-app, so we will make one by one pages, like 1st we complete registration, then login, etc. We will not complete whole project at once. 
+IMPORTANT NOTE: We have to check backend code and according to that we have to make front-end
+
+I also export json file of my project from postman which contains all the APIs, and my `{{url}}` value is `http://127.0.0.1:8000/api`. So you can refer that file to analyse the back-end APIs
+
+So now let's start wit registration and login page, accorording back-end write the code. And my code must be work perfectly and data must be reflect in my database table.

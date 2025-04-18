@@ -1,9 +1,9 @@
 {
 	"info": {
-		"_postman_id": "9a3eae95-7993-45bf-9627-77701b6bf12c",
+		"_postman_id": "4c4af3cd-8f9e-4ba7-b1a0-e9f139005a71",
 		"name": "Parking",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "41931282"
+		"_exporter_id": "32996593"
 	},
 	"item": [
 		{
@@ -16,7 +16,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"first_name\": \"John\",\n    \"last_name\": \"Doe\",\n    \"email\": \"johndoe@example.com\",\n    \"contact_number\": \"9876543210\",\n    \"password\": \"SecurePass123\",\n    \"password_confirmation\": \"SecurePass123\",\n    \"state\": \"California\",\n    \"city\": \"Los Angeles\",\n    \"country\": \"USA\",\n    \"role\": \"user\"\n}",
+							"raw": "{\n    \"first_name\": \"Dhruv\",\n    \"last_name\": \"Maniya\",\n    \"email\": \"dhruv@gmail.com\",\n    \"contact_number\": \"6543210987\",\n    \"password\": \"maniya1234M\",\n    \"password_confirmation\": \"maniya1234M\",\n    \"state\": \"Gujarat\",\n    \"city\": \"Ahmedabad\",\n    \"country\": \"India\",\n    \"role\": \"user\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -43,7 +43,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"contact_number\": \"9876543210\",\n    \"otp\": \"377196\",\n    \"type\": \"registration\"\n}",
+							"raw": "{\r\n    \"contact_number\": \"6543210987\",\r\n    \"otp\": \"003392\",\r\n    \"type\": \"registration\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -70,7 +70,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"contact_number\": \"9876543210\",\n    \"password\": \"NewSecurePass123\"\n}",
+							"raw": "{\n    \"contact_number\": \"8764532134\",\n    \"password\": \"abhishek1234A\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -152,7 +152,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "10|8yVQOQffD2QJ6TyeNlCsjayosX9So0hOCZEHtgr2b8fea821",
+									"value": "6|21PfxbCrLvT3Qv6ljGMGAbEOju3GnIg6Ev4wUtul08e6061a",
 									"type": "string"
 								}
 							]
@@ -218,9 +218,21 @@
 			"item": [
 				{
 					"name": "Get All Location",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
 					"request": {
 						"method": "GET",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
 							"raw": "{{url}}/parking-locations",
 							"host": [
@@ -459,7 +471,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "9|rIDBMnOlyoloaqHC7erJsgRWnA74tRJxc8vBun71a151811c",
+									"value": "3|J1NnAJTanPrqMu15bALFslcoaVoH5xQg3iDXGN2La9c40826",
 									"type": "string"
 								}
 							]
@@ -504,7 +516,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"type\": \"4-wheeler\",\n  \"number_plate\": \"ABC123\",\n  \"brand\": \"Toyota\",\n  \"model\": \"Corolla\",\n  \"color\": \"Blue\"\n}\n",
+							"raw": "{\n  \"type\": \"4-wheeler\",\n  \"number_plate\": \"ABC123\",\n  \"brand\": \"Toyota\",\n  \"model\": \"Corolla\",\n  \"color\": \"Blue\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -564,7 +576,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "9|rIDBMnOlyoloaqHC7erJsgRWnA74tRJxc8vBun71a151811c",
+									"value": "3|J1NnAJTanPrqMu15bALFslcoaVoH5xQg3iDXGN2La9c40826",
 									"type": "string"
 								}
 							]
@@ -591,7 +603,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "9|rIDBMnOlyoloaqHC7erJsgRWnA74tRJxc8vBun71a151811c",
+									"value": "3|J1NnAJTanPrqMu15bALFslcoaVoH5xQg3iDXGN2La9c40826",
 									"type": "string"
 								}
 							]
@@ -600,7 +612,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"parking_location_id\": 2,\n  \"vehicle_id\": 21,\n  \"duration_hours\": 3\n}\n",
+							"raw": "{\n  \"parking_location_id\": 1,\n  \"vehicle_id\": 21,\n  \"duration_hours\": 2\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -628,7 +640,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "9|rIDBMnOlyoloaqHC7erJsgRWnA74tRJxc8vBun71a151811c",
+									"value": "3|J1NnAJTanPrqMu15bALFslcoaVoH5xQg3iDXGN2La9c40826",
 									"type": "string"
 								}
 							]
@@ -637,7 +649,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"parking_location_id\": 3,\n  \"vehicle_id\": 21,\n  \"date\": \"2025-03-21\",\n  \"start_time\": \"10:30\",\n  \"end_time\": \"12:00\"\n}\n",
+							"raw": "{\n  \"parking_location_id\": 1,\n  \"vehicle_id\": 1,\n  \"date\": \"2025-04-04\",\n  \"start_time\": \"11:00\",\n  \"end_time\": \"12:00\"\n}\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -665,7 +677,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "9|rIDBMnOlyoloaqHC7erJsgRWnA74tRJxc8vBun71a151811c",
+									"value": "3|J1NnAJTanPrqMu15bALFslcoaVoH5xQg3iDXGN2La9c40826",
 									"type": "string"
 								}
 							]
@@ -673,13 +685,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/bookings/33",
+							"raw": "{{url}}/bookings/2",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"bookings",
-								"33"
+								"2"
 							]
 						}
 					},
@@ -693,7 +705,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "9|rIDBMnOlyoloaqHC7erJsgRWnA74tRJxc8vBun71a151811c",
+									"value": "3|J1NnAJTanPrqMu15bALFslcoaVoH5xQg3iDXGN2La9c40826",
 									"type": "string"
 								}
 							]
@@ -701,13 +713,13 @@
 						"method": "POST",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/bookings/33/cancel",
+							"raw": "{{url}}/bookings/2/cancel",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"bookings",
-								"33",
+								"2",
 								"cancel"
 							]
 						}
@@ -722,7 +734,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "9|rIDBMnOlyoloaqHC7erJsgRWnA74tRJxc8vBun71a151811c",
+									"value": "3|J1NnAJTanPrqMu15bALFslcoaVoH5xQg3iDXGN2La9c40826",
 									"type": "string"
 								}
 							]
@@ -730,13 +742,13 @@
 						"method": "POST",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/bookings/31/complete",
+							"raw": "{{url}}/bookings/1/complete",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"bookings",
-								"31",
+								"1",
 								"complete"
 							]
 						}
@@ -751,7 +763,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "9|rIDBMnOlyoloaqHC7erJsgRWnA74tRJxc8vBun71a151811c",
+									"value": "3|J1NnAJTanPrqMu15bALFslcoaVoH5xQg3iDXGN2La9c40826",
 									"type": "string"
 								}
 							]
@@ -760,7 +772,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"qr_code\": \"QR_CCCBF83B45\"\n}",
+							"raw": "{\n    \"qr_code\": \"zagzRCOc2J1743701913\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1010,7 +1022,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "10|8yVQOQffD2QJ6TyeNlCsjayosX9So0hOCZEHtgr2b8fea821",
+									"value": "6|21PfxbCrLvT3Qv6ljGMGAbEOju3GnIg6Ev4wUtul08e6061a",
 									"type": "string"
 								}
 							]
@@ -1038,7 +1050,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "10|8yVQOQffD2QJ6TyeNlCsjayosX9So0hOCZEHtgr2b8fea821",
+									"value": "6|21PfxbCrLvT3Qv6ljGMGAbEOju3GnIg6Ev4wUtul08e6061a",
 									"type": "string"
 								}
 							]
@@ -1066,7 +1078,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "10|8yVQOQffD2QJ6TyeNlCsjayosX9So0hOCZEHtgr2b8fea821",
+									"value": "3|J1NnAJTanPrqMu15bALFslcoaVoH5xQg3iDXGN2La9c40826",
 									"type": "string"
 								}
 							]
@@ -1074,14 +1086,14 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/owner/bookings/33",
+							"raw": "{{url}}/owner/bookings/1",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"owner",
 								"bookings",
-								"33"
+								"1"
 							]
 						}
 					},
@@ -1095,7 +1107,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "10|8yVQOQffD2QJ6TyeNlCsjayosX9So0hOCZEHtgr2b8fea821",
+									"value": "6|21PfxbCrLvT3Qv6ljGMGAbEOju3GnIg6Ev4wUtul08e6061a",
 									"type": "string"
 								}
 							]
@@ -1192,7 +1204,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "10|8yVQOQffD2QJ6TyeNlCsjayosX9So0hOCZEHtgr2b8fea821",
+									"value": "3|J1NnAJTanPrqMu15bALFslcoaVoH5xQg3iDXGN2La9c40826",
 									"type": "string"
 								}
 							]
@@ -1201,7 +1213,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"qr_code\": \"eyUyVWX2U81742408625\"\n}\n",
+							"raw": "{\n  \"qr_code\": \"zagzRCOc2J1743701913\"\n}\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1209,14 +1221,14 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/owner/bookings/32/check-in",
+							"raw": "{{url}}/owner/bookings/2/check-in",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"owner",
 								"bookings",
-								"32",
+								"2",
 								"check-in"
 							]
 						}
@@ -1231,7 +1243,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "10|8yVQOQffD2QJ6TyeNlCsjayosX9So0hOCZEHtgr2b8fea821",
+									"value": "3|J1NnAJTanPrqMu15bALFslcoaVoH5xQg3iDXGN2La9c40826",
 									"type": "string"
 								}
 							]
@@ -1240,7 +1252,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"qr_code\": \"eyUyVWX2U81742408625\"\n}\n",
+							"raw": "{\n  \"qr_code\": \"zagzRCOc2J1743701913\"\n}\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1248,14 +1260,14 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/owner/bookings/32/check-out",
+							"raw": "{{url}}/owner/bookings/1/check-out",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"owner",
 								"bookings",
-								"32",
+								"1",
 								"check-out"
 							]
 						}
