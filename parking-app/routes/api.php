@@ -27,6 +27,7 @@ Route::prefix('auth')->group(function () {
 
 // Public parking location routes
 Route::get('/parking-locations', [ParkingLocationController::class, 'index']);
+Route::get('/parking-locations/search', [ParkingLocationController::class, 'search']);
 Route::get('/parking-locations/{parkingLocation}', [ParkingLocationController::class, 'show']);
 
 // Protected routes
@@ -67,7 +68,7 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::post('/bookings/{booking}/check-in', [OwnerController::class, 'checkInBooking']);
         Route::post('/bookings/{booking}/check-out', [OwnerController::class, 'checkOutBooking']);
         Route::get('/revenue-reports', [OwnerController::class, 'revenueReports']);
-    });
+    }); 
 
     // Parking location routes (for owners)
     Route::apiResource('parking-locations', ParkingLocationController::class)->except(['index', 'show']);

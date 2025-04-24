@@ -202,30 +202,29 @@ class ParkingLocationController extends Controller
     }
 
     /**
-     * Toggle the active status of the parking location.
+     * Toggle the status of a parking location
      */
-    public function toggleStatus(ParkingLocation $parkingLocation): JsonResponse
+    public function toggleStatus(ParkingLocation $parkingLocation)
     {
-        // Check if the parking location belongs to the authenticated owner
+        // Verify ownership
         if ($parkingLocation->owner_id !== Auth::id()) {
-            return response()->json([
-                'message' => 'Unauthorized.',
-            ], 403);
+            return response()->json(['message' => 'Unauthorized. You do not own this parking location.'], 403);
         }
 
-        // Toggle is_active using a direct update query
+        // Use a direct update query with PostgreSQL-compatible boolean syntax
         DB::table('parking_locations')
             ->where('id', $parkingLocation->id)
-            ->update(['is_active' => DB::raw('NOT is_active')]); // PostgreSQL handles boolean correctly
-
-        // Fetch the updated status
-        $updatedStatus = DB::table('parking_locations')
-            ->where('id', $parkingLocation->id)
-            ->value('is_active');
+            ->update([
+                'is_active' => DB::raw('NOT is_active'),
+                'updated_at' => now()
+            ]);
+        
+        // Refresh the model to get the updated status
+        $parkingLocation->refresh();
 
         return response()->json([
-            'message' => 'Parking location status updated successfully.',
-            'is_active' => $updatedStatus,
+            'message' => 'Parking location status updated successfully',
+            'is_active' => $parkingLocation->is_active
         ]);
     }
 
@@ -243,6 +242,81 @@ class ParkingLocationController extends Controller
 
         $parkingLocations = Auth::user()->parkingLocations()->with('slotAvailabilities')->get();
 
+        return response()->json([
+            'parking_locations' => ParkingLocationResource::collection($parkingLocations),
+        ]);
+    }
+
+    /**
+     * Remove the specified parking location from storage.
+     */
+    public function destroy(ParkingLocation $parkingLocation)
+    {
+        // Verify ownership
+        if ($parkingLocation->owner_id !== Auth::id()) {
+            return response()->json(['message' => 'Unauthorized. You do not own this parking location.'], 403);
+        }
+
+        // Check if the location is active
+        if ($parkingLocation->is_active) {
+            return response()->json(['message' => 'Cannot delete an active parking location. Please deactivate it first.'], 400);
+        }
+
+        // Check if there are any active or upcoming bookings
+        $hasBookings = $parkingLocation->bookings()
+            ->where(function ($query) {
+                $query->where('status', 'confirmed')
+                    ->orWhere('status', 'checked_in');
+            })
+            ->exists();
+
+        if ($hasBookings) {
+            return response()->json(['message' => 'Cannot delete this parking location as it has active or upcoming bookings.'], 400);
+        }
+
+        try {
+            // Use a transaction to ensure data integrity
+            DB::beginTransaction();
+            
+            // Delete related slot availabilities first
+            $parkingLocation->slotAvailabilities()->delete();
+            
+            // Delete the parking location
+            $parkingLocation->delete();
+            
+            DB::commit();
+            
+            return response()->json(['message' => 'Parking location deleted successfully'], 200);
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return response()->json(['message' => 'Failed to delete parking location', 'error' => $e->getMessage()], 500);
+        }
+    }
+
+    /**
+     * Search for parking locations based on query parameter
+     */
+    public function search(Request $request): JsonResponse
+    {
+        $query = $request->get('query');
+        
+        if (!$query) {
+            return response()->json([
+                'message' => 'Search query is required',
+            ], 400);
+        }
+        
+        $parkingLocations = ParkingLocation::query()
+            ->where('is_active', DB::raw('TRUE'))
+            ->where(function($q) use ($query) {
+                $q->where('name', 'like', "%{$query}%")
+                  ->orWhere('address', 'like', "%{$query}%")
+                  ->orWhere('city', 'like', "%{$query}%")
+                  ->orWhere('state', 'like', "%{$query}%");
+            })
+            ->with('slotAvailabilities')
+            ->get();
+            
         return response()->json([
             'parking_locations' => ParkingLocationResource::collection($parkingLocations),
         ]);
