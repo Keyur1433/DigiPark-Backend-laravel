@@ -1273,6 +1273,34 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Delete Location",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "66|sTYBptCrQgL0vLBglcVQ9rNYL2hAhfquXKY7deb767a64f17",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/parking-locations/5",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"parking-locations",
+								"5"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		}
